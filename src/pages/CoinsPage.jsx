@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CoinCard from "../components/CoinCard";
 
 function CoinsPage() {
   const [coins, setCoins] = useState([]);
@@ -16,10 +17,7 @@ function CoinsPage() {
       <h1>Coins</h1>
       {/* <p>Coin list will appear here.</p> */}
       {coins.map((coin) => (
-        <div key={coin.id}>
-          <h3>{coin.name}</h3>
-          <p>Price: ${coin.price_usd}</p>
-        </div>
+        <CoinCard key={coin.id} coin={coin} />
       ))}
     </section>
   );
