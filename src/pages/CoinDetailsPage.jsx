@@ -7,8 +7,9 @@ function CoinDetailsPage() {
   const { id } = useParams();
   const [coin, setCoin] = useState(null);
   const { watchlist, addCoin } = useContext(WatchlistContext);
-  const exists = watchlist.some((c) => c.id === coin.id);
   const [loading, setLoading] = useState(true);
+
+  const exists = coin && watchlist.some((c) => c.id === coin.id);
 
   useEffect(() => {
     fetch(`https://api.coinlore.net/api/ticker/?id=${id}`)

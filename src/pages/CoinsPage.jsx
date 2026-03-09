@@ -32,11 +32,14 @@ function CoinsPage() {
   }
 
   if (sort === "name") {
-    sortedCoins.sort((a, b) => b.name.localeCompare(b.name));
+    sortedCoins.sort((a, b) =>
+      /*alphabetic string sort*/
+      a.name.localeCompare(b.name),
+    );
   }
 
   if (sort === "rank") {
-    sortedCoins.sort((a, b) => b.rank - a.rank);
+    sortedCoins.sort((a, b) => a.rank - b.rank);
   }
 
   if (error) {
