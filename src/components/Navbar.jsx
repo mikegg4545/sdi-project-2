@@ -13,7 +13,8 @@ function Navbar() {
         {" | "}
         <Link to="/coins">Coins</Link>
         {" | "}
-        <span>Watchlist: {watchlist.length}</span>
+        <Link to="/watchlist">Watchlist</Link>
+        <span>: {watchlist.length}</span>
       </div>
     </nav>
   );

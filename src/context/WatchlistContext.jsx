@@ -6,7 +6,11 @@ function WatchlistProvider({ children }) {
   const [watchlist, setWatchlist] = useState([]);
 
   function addCoin(coin) {
-    setWatchlist([...watchlist, coin]);
+    const exists = watchlist.some((c) => c.id === coin.id);
+
+    if (!exists) {
+      setWatchlist([...watchlist, coin]);
+    }
   }
 
   function removeCoin(id) {
