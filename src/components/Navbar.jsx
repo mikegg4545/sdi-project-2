@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { WatchlistContext } from "../context/WatchlistContext";
 
 function Navbar() {
+  const { watchlist } = useContext(WatchlistContext);
+
   return (
     <nav>
       <h2>Crypto Tracker</h2>
@@ -8,6 +12,8 @@ function Navbar() {
         <Link to="/">Home</Link>
         {" | "}
         <Link to="/coins">Coins</Link>
+        {" | "}
+        <span>Watchlist: {watchlist.length}</span>
       </div>
     </nav>
   );
