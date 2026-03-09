@@ -48,22 +48,31 @@ function CoinsPage() {
   return (
     <section>
       <h1>Coins</h1>
-      <select value={sort} onChange={(e) => setSort(e.target.value)}>
-        <option value="rank">Rank</option>
-        <option value="price">Price</option>
-        <option value="name">Name</option>
-      </select>
+      <div className="flex gap-4 mb-6">
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className="bg-gray-800 border border-gray-600 rounded px-3 py-2"
+        >
+          <option value="rank">Rank</option>
+          <option value="price">Price</option>
+          <option value="name">Name</option>
+        </select>
 
-      {/* <p>Coin list will appear here.</p> */}
-      <input
-        type="text"
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      {sortedCoins.map((coin) => (
-        <CoinCard key={coin.id} coin={coin} />
-      ))}
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="bg-gray-800 border border-gray-600 rounded px-3 py-2"
+        />
+      </div>
+      {/* render coin using coin card  */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {sortedCoins.map((coin) => (
+          <CoinCard key={coin.id} coin={coin} />
+        ))}
+      </div>
     </section>
   );
 }
