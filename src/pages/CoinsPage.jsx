@@ -5,12 +5,19 @@ function CoinsPage() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("rank");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch("https://api.coinlore.net/api/tickers/?limit=10")
       .then((res) => res.json())
       .then((data) => {
         setCoins(data.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Failed to load.");
+        setLoading(false);
       });
   }, []);
 
@@ -32,6 +39,12 @@ function CoinsPage() {
     sortedCoins.sort((a, b) => b.rank - a.rank);
   }
 
+  if (error) {
+    return <p>{error}</p>;
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   return (
     <section>
       <h1>Coins</h1>
