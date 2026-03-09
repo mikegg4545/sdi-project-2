@@ -47,7 +47,7 @@ function CoinsPage() {
   }
   return (
     <section>
-      <h1>Coins</h1>
+      <h1 className="text-2xl font-bold mb-6">Coins</h1>
       <div className="flex gap-4 mb-6">
         <select
           value={sort}
